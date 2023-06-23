@@ -46,8 +46,7 @@ function App() {
 
   const [currentState,setCurrentState]=useState({id:false,name:false,price:false,calories:false,ingredient:false,weight:false});
 
-  const [sortItem,setSortItem]=useState();
-
+ 
 
 // function to handel search
 
@@ -80,6 +79,7 @@ const sortById = () => {
     setCurrentState(prev=> ({...prev,id:!prev.id}) )
 
   }
+  
   
 };
 // sort by Name
@@ -158,8 +158,8 @@ const sortByCalories = () => {
 // sort by Name
 const sortByIngredient=()=>{
   if(!currentState.ingredient){
-    const DesendingByIngredient=[...data].sort((a,b)=>b.ingredients[0].localeCompare(a.ingredients[0]))
-    setData(DesendingByIngredient);
+    const DescendingByIngredient=[...data].sort((a,b)=>b.ingredients[0].localeCompare(a.ingredients[0]))
+    setData(DescendingByIngredient);
     setCurrentState(prev=> ({...prev,ingredient:!prev.ingredient}) )
 
     
@@ -183,6 +183,7 @@ const sortByIngredient=()=>{
   Search Item:  {"  "}
   <input style={{width:"250px"}} placeholder='Enter snack name or ingredient' onChange={(e)=>handelSearch(e.target.value)}/>
 </div>
+
 
 
 
