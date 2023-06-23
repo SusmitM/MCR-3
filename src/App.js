@@ -46,6 +46,9 @@ function App() {
 
   const [currentState,setCurrentState]=useState({id:false,name:false,price:false,calories:false,ingredient:false,weight:false});
 
+  const [sortItem,setSortItem]=useState();
+
+
 // function to handel search
 
 const handelSearch=(searchText)=>{
@@ -68,7 +71,7 @@ const sortById = () => {
   const DescendingById = [...data].sort((a, b) => b.id - a.id);
   setData(DescendingById);
   setCurrentState(prev=> ({...prev,id:!prev.id}) )
-  return
+  
   }
   else{
     const AscendingById = [...data].sort((a, b) => a.id - b.id);
@@ -86,7 +89,7 @@ const sortByName=()=>{
     setData(DescendingByName);
     setCurrentState(prev=> ({...prev,name:!prev.name}) )
 
-    return
+   
   }
   else{
     const AscendingByName=[...data].sort((a,b)=>a.product_name.localeCompare(b.product_name))
@@ -101,7 +104,7 @@ const sortByPrice = () => {
   const DescendingByPrice = [...data].sort((a, b) => b.price - a.price);
   setData(DescendingByPrice);
   setCurrentState(prev=> ({...prev,price:!prev.price}) )
-  return
+ 
   }
   else{
     const AscendingByPrice = [...data].sort((a, b) => a.price - b.price);
@@ -119,7 +122,7 @@ const sortByWeight = () => {
   const DescendingByWeight = [...data].sort((a, b) => parseInt(b.product_weight) -parseInt(a.product_weight));
   setData(DescendingByWeight);
   setCurrentState(prev=> ({...prev,weight:!prev.weight}) )
-  return
+ 
   }
   else{
     const AscendingByWeight = [...data].sort((a, b) => parseInt(a.product_weight) - parseInt(b.product_weight));
@@ -140,7 +143,7 @@ const sortByCalories = () => {
   const DescendingByCalories = [...data].sort((a, b) => b.calories - a.calories);
   setData(DescendingByCalories);
   setCurrentState(prev=> ({...prev,calories:!prev.calories}) )
-  return
+ 
   }
   else{
     const AscendingByCalories = [...data].sort((a, b) => a.calories - b.calories);
@@ -159,7 +162,7 @@ const sortByIngredient=()=>{
     setData(DesendingByIngredient);
     setCurrentState(prev=> ({...prev,ingredient:!prev.ingredient}) )
 
-    return
+    
   }
   else{
     const AscendingByIngredient=[...data].sort((a,b)=>a.ingredients[0].localeCompare(b.ingredients[0]))
@@ -177,6 +180,7 @@ const sortByIngredient=()=>{
 <h1>Snacks Table</h1>
 
 <div style={{margin:"20px auto"}}>
+  Search Item:  {"  "}
   <input style={{width:"250px"}} placeholder='Enter snack name or ingredient' onChange={(e)=>handelSearch(e.target.value)}/>
 </div>
 
